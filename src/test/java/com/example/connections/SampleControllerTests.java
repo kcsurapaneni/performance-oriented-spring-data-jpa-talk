@@ -35,4 +35,9 @@ class SampleControllerTests {
         restTemplate.getForEntity("/nested", Void.class);
     }
 
+    @Test
+    void nestedWithInService() {
+        restTemplate.getForEntity("/nested/with-in", Void.class);
+    }
+
 }

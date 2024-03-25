@@ -33,4 +33,9 @@ public class SampleController {
     void nested() {
         sampleService.withNestedTransaction();
     }
+
+    @GetMapping("/nested/with-in")
+    void nestedWithInService() {
+        sampleService.withNestedSameServiceTransaction();
+    }
 }

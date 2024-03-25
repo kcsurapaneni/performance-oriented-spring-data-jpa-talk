@@ -1,7 +1,7 @@
 package com.example.connections;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.annotation.*;
 
 @Service
 public class SampleService {
@@ -36,5 +36,16 @@ public class SampleService {
     public void withNestedTransaction() {
         System.out.println(personRepository.findAll());
         anotherService.runsInNewTransaction();
+    }
+
+    @Transactional
+    public void withNestedSameServiceTransaction() {
+        System.out.println(personRepository.findAll());
+        nestedSameService();
+    }
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void nestedSameService() {
+        System.out.println(personRepository.findAll());
     }
 }
